@@ -13,7 +13,7 @@ export default function PerfumesHome(){
     const [perfumes , setPerfumes] = useState<IPerfume[]>([])
     useEffect(() => {
         const fetchPerfume = async() =>{
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume`)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/perfume`)
             const data:IPerfume[] = await res.json()
             setPerfumes(data)
         }

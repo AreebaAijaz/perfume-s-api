@@ -15,7 +15,7 @@ export default function PerfumeData({params}:{params:{id:string}}){
 
     useEffect(()=>{
         async function FetchingPerfume(){
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume/${params.id}`)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/perfume/${params.id}`)
             const data:IPerfume = await res.json()
             setPerfume(data)
         }
