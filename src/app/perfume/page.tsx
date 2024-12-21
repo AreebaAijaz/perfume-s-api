@@ -11,14 +11,28 @@ import Link from "next/link"
 
 export default function PerfumesHome(){
     const [perfumes , setPerfumes] = useState<IPerfume[]>([])
+    // useEffect(() => {
+    //     const fetchPerfume = async() =>{
+    //         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume`)
+    //         const data:IPerfume[] = await res.json()
+    //         setPerfumes(data)
+    //     }
+    //     fetchPerfume()
+    // }, [])
     useEffect(() => {
-        const fetchPerfume = async() =>{
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/perfume`)
-            const data:IPerfume[] = await res.json()
-            setPerfumes(data)
-        }
-        fetchPerfume()
-    }, [])
+      const fetchPerfume = async () => {
+          try {
+              const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume`);
+              if (!res.ok) throw new Error("Failed to fetch perfumes");
+              const data: IPerfume[] = await res.json();
+              setPerfumes(data);
+          } catch (error) {
+              console.error("Error fetching perfumes:", error);
+          }
+      };
+      fetchPerfume();
+  }, []);
+  
     return (
         <div className="container mx-auto p-4">
           <h1 className="text-3xl font-bold text-center mb-10">Our Perfume Collection</h1>

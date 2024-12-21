@@ -13,14 +13,23 @@ interface IPerfume{
 export default function PerfumeData({params}:{params:{id:string}}){
     const [perfume , setPerfume] = useState<IPerfume | null>(null)
 
-    useEffect(()=>{
-        async function FetchingPerfume(){
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/perfume/${params.id}`)
-            const data:IPerfume = await res.json()
-            setPerfume(data)
+    // useEffect(()=>{
+    //     async function FetchingPerfume(){
+    //         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume/${params.id}`)
+    //         const data:IPerfume = await res.json()
+    //         setPerfume(data)
+    //     }
+    //     FetchingPerfume()
+    // },[params.id])
+    useEffect(() => {
+        async function FetchingPerfume() {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/perfume/${params.id}`);
+            const data: IPerfume = await res.json();
+            setPerfume(data);
         }
-        FetchingPerfume()
-    },[params.id])
+        FetchingPerfume();
+    }, [params.id]);
+    
     return(
         <div>
              {perfume ? (
