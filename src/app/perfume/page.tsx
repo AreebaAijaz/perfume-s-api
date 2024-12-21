@@ -1,4 +1,3 @@
-
 interface IPerfume{
     id: number,
     title: string,
@@ -29,7 +28,7 @@ export default function PerfumesHome(){
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {perfumes.map((perfume) => (
                 <Link key={perfume.id} href={`/perfume/${perfume.id}`}>
-                  <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                  <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
                     <Image
                       src={perfume.Image}
                       alt={perfume.title}
